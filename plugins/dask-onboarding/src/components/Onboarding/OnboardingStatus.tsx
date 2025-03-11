@@ -214,8 +214,8 @@ function ManualInputTeamConfig({
   }
 
   function onChange(env: Env, val: string, state: GcpConfig, setState: (v: GcpConfig) => void) {
-    const newState = { ...state };
-    newState[env] = val;
+    const trimmedValue = val.trim(); 
+    const newState = { ...state, [env]: trimmedValue };
     setState(newState);
   }
 
