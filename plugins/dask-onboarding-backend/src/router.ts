@@ -16,7 +16,7 @@ const pubsub = new PubSub({
   projectId: process.env.DASK_GCP_PROJECT_ID,
 });
 
-const topicId = 'onboarding_topic';
+const topicId = process.env.TOPIC_ID || "onboarding_topic";
 
 /** A Firestore converter, unchanged from before */
 const converter = {
@@ -45,8 +45,6 @@ type UserGroupsRaw = {
 /** Decode token using `jwt-decode` */
 function decodeToken(token: string): UserGroupsRaw | null {
   try {
-    console.log(jwtDecode)
-    console.log(jwtDecode)
     return jwtDecode<UserGroupsRaw>(token);
   } catch (error) {
     console.error('Invalid token:', error);
@@ -90,7 +88,23 @@ export async function createRouter({}): Promise<express.Router> {
     res.json({ status: 'ok' });
   });
 
+  router.get('/status/:teamId', async (req, res) => {
+    try {
+      const collection = firestore.collection('onboarding').withConverter(converter);
+      const teamDoc = (await collection.doc(req.params.teamId).get()).data();
+      
+      if (!teamDoc || !teamDoc.last_status) {
+        return res.status(404).json({ error: "Status not found for teamId: " + req.params.teamId });
+      }
   
+      return res.json(teamDoc.last_status);
+    } catch (error) {
+      console.error("Error fetching onboarding status:", error);
+      return res.status(500).json({ error: "Internal server error" });
+    }
+  });
+  
+
   router.post(
     '/onboarding/start',
     async (req: Request<any, any, { team: string; areaName: string; projectName: string }>, res) => {

@@ -1,4 +1,4 @@
-import { GcpConfig, TeamDoc } from "./types";
+import { GcpConfig, Status, TeamDoc } from "./types";
 
 function getBaseUrl() {
   if (window.location.origin.includes('localhost')) {
@@ -26,6 +26,10 @@ export class OnboardingClient {
   static async getTeams(token: string): Promise<TeamsRes> {
     const res = await makeRequest("/teams", "GET", token) as TeamsRes;
     return res;
+  }
+
+  static async getStatus(token: string, teamId: string): Promise<Status> {
+    return makeRequest(`/status/${teamId}`, "GET", token);
   }
 
   static async updateDataIngestor(token: string, teamName: string, areaName: string, projectName: string, stateBuckets: GcpConfig, gitTeamName: string) {
