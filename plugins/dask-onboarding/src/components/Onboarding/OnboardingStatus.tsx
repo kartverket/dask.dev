@@ -54,6 +54,7 @@ export default function OnboardingStatus({ teams, token }: IProps) {
       <Content>
         <h2 style={h2Style}>Noe gikk galt</h2>
         <p style={{ fontSize: 16 }}>Det har oppstått en feil i prosessen. Kontakt DASK for hjelp.</p>
+        <p>Feilmelding: {lastStatus.error.message}</p>
       </Content>
     );
   }

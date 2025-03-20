@@ -8633,7 +8633,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@kartverket/backstage-plugin-dask-onboarding@npm:^0.1.21, @kartverket/backstage-plugin-dask-onboarding@workspace:plugins/dask-onboarding":
+"@kartverket/backstage-plugin-dask-onboarding@workspace:*, @kartverket/backstage-plugin-dask-onboarding@workspace:plugins/dask-onboarding":
   version: 0.0.0-use.local
   resolution: "@kartverket/backstage-plugin-dask-onboarding@workspace:plugins/dask-onboarding"
   dependencies:
@@ -17813,7 +17813,7 @@ __metadata:
     "@backstage/theme": "npm:^0.6.4"
     "@internal/plugin-instatus": "npm:^0.1.0"
     "@k-phoen/backstage-plugin-grafana": "npm:^0.1.22"
-    "@kartverket/backstage-plugin-dask-onboarding": "npm:^0.1.21"
+    "@kartverket/backstage-plugin-dask-onboarding": "workspace:*"
     "@kartverket/backstage-plugin-opencost": "npm:^0.1.7"
     "@kartverket/backstage-plugin-risk-scorecard": "npm:^2.1.6"
     "@kartverket/backstage-plugin-security-metrics-frontend": "npm:3.10.3"
