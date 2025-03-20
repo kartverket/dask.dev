@@ -47,6 +47,17 @@ export default function OnboardingStatus({ teams, token }: IProps) {
     );
   }
 
+  console.log(lastStatus);
+
+  if (lastStatus.error) {
+    return (
+      <Content>
+        <h2 style={h2Style}>Noe gikk galt</h2>
+        <p style={{ fontSize: 16 }}>Det har oppstått en feil i prosessen. Kontakt DASK for hjelp.</p>
+      </Content>
+    );
+  }
+
   if (lastStatus.step === "iam-setup" && lastStatus.status === "manual-intervention") {
     const team_pr = team.pr?.["iam-setup"] === undefined ? "" : team.pr["iam-setup"];
     return <ManualInputTeamConfig name={team.name} areaName={team.area_name} projectName={team.project_name} pullRequestUrl={team_pr} token={token} />;
