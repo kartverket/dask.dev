@@ -52,6 +52,6 @@ backend.add(import('@backstage/plugin-search-backend-module-pg'));
 
 // TechDocs
 backend.add(import('@backstage/plugin-techdocs-backend'));
-backend.add(import('@internal/plugin-dask-onboarding-backend'));
+backend.add(import('@kartverket/backstage-plugin-dask-onboarding-backend'));
 
 backend.start();

@@ -1,4 +1,4 @@
-import { GcpConfig, Status, TeamDoc } from "./types";
+import { GcpConfig, TeamDoc } from "./types";
 
 function getBaseUrl() {
   if (window.location.origin.includes('localhost')) {
