@@ -28,10 +28,6 @@ export class OnboardingClient {
     return res;
   }
 
-  static async getStatus(token: string, teamId: string): Promise<Status> {
-    return makeRequest(`/status/${teamId}`, "GET", token);
-  }
-
   static async updateDataIngestor(token: string, teamName: string, areaName: string, projectName: string, stateBuckets: GcpConfig, gitTeamName: string) {
     makeRequest("/onboarding/gcp-state-buckets", "PUT", token, { team: teamName, areaName, projectName, stateBuckets, gitTeamName })
   }
