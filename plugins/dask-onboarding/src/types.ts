@@ -9,10 +9,16 @@ export type PullRequest = {
     "configure-ingestor"?: string;
 };
 
+export type Error = {
+    message: string;
+    step: Step;
+} | null;
+
 export type Status = {
     last_updated: string;
     status: StepStatus;
     step: Step;
+    error: Error;
 }
 
 export type TeamDoc = {

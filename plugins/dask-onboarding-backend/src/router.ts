@@ -16,7 +16,7 @@ const pubsub = new PubSub({
   projectId: process.env.DASK_GCP_PROJECT_ID,
 });
 
-const topicId = 'onboarding_topic';
+const topicId = process.env.TOPIC_ID || "onboarding_topic";
 
 /** A Firestore converter, unchanged from before */
 const converter = {
@@ -45,8 +45,6 @@ type UserGroupsRaw = {
 /** Decode token using `jwt-decode` */
 function decodeToken(token: string): UserGroupsRaw | null {
   try {
-    console.log(jwtDecode)
-    console.log(jwtDecode)
     return jwtDecode<UserGroupsRaw>(token);
   } catch (error) {
     console.error('Invalid token:', error);
@@ -90,7 +88,6 @@ export async function createRouter({}): Promise<express.Router> {
     res.json({ status: 'ok' });
   });
 
-  
   router.post(
     '/onboarding/start',
     async (req: Request<any, any, { team: string; areaName: string; projectName: string }>, res) => {

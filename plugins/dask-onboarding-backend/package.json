@@ -1,22 +1,21 @@
 {
-  "name": "@internal/plugin-dask-onboarding-backend",
-  "version": "0.1.15",
+  "name": "@kartverket/backstage-plugin-dask-onboarding-backend",
+  "version": "0.1.16",
   "license": "Apache-2.0",
-  "private": true,
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "./dist/index.cjs.js",
+  "types": "./dist/index.d.ts",
   "publishConfig": {
-    "access": "public",
-    "main": "dist/index.cjs.js",
-    "types": "dist/index.d.ts"
+    "access": "public"
   },
   "backstage": {
     "role": "backend-plugin",
-    "pluginId": "dask-onboarding",
+    "pluginId": "dask-onboarding-backend",
     "pluginPackages": [
-      "@internal/plugin-dask-onboarding-backend",
-      "@kartverket/backstage-plugin-dask-onboarding"
-    ]
+      "@kartverket/backstage-plugin-dask-onboarding-backend"
+    ],
+    "features": {
+      ".": "@backstage/BackendFeature"
+    }
   },
   "scripts": {
     "start": "backstage-cli package start",
@@ -54,5 +53,12 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "typesVersions": {
+    "*": {
+      "index": [
+        "dist/index.d.ts"
+      ]
+    }
+  }
 }
