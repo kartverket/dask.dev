@@ -8605,7 +8605,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@kartverket/backstage-plugin-dask-onboarding-backend@npm:^0.1.16, @kartverket/backstage-plugin-dask-onboarding-backend@workspace:*, @kartverket/backstage-plugin-dask-onboarding-backend@workspace:plugins/dask-onboarding-backend":
+"@kartverket/backstage-plugin-dask-onboarding-backend@npm:^0.1.16, @kartverket/backstage-plugin-dask-onboarding-backend@workspace:plugins/dask-onboarding-backend":
   version: 0.0.0-use.local
   resolution: "@kartverket/backstage-plugin-dask-onboarding-backend@workspace:plugins/dask-onboarding-backend"
   dependencies:
@@ -8644,7 +8644,7 @@ __metadata:
     "@backstage/dev-utils": "npm:^1.1.7"
     "@backstage/test-utils": "npm:^1.7.5"
     "@backstage/theme": "npm:^0.6.4"
-    "@kartverket/backstage-plugin-dask-onboarding-backend": "workspace:*"
+    "@kartverket/backstage-plugin-dask-onboarding-backend": "npm:^0.1.16"
     "@material-ui/core": "npm:^4.9.13"
     "@material-ui/icons": "npm:^4.9.1"
     "@material-ui/lab": "npm:4.0.0-alpha.61"

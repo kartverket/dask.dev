@@ -36,25 +36,6 @@ const app = createApp({
         availableLanguages: ['en', 'no'],
         resources: [pluginRiScNorwegianTranslation],
     },
-    components: {
-        SignInPage: props => {
-            const configApi = useApi(configApiRef);
-            if (configApi.getOptionalString('auth.environment') != 'production') {
-                return <SignInPage {...props} auto providers={['guest', {
-                    id: 'microsoft-auth-provider',
-                    title: 'Microsoft',
-                    message: 'Sign in using Microsoft',
-                    apiRef: microsoftAuthApiRef,
-                }]} />;
-            }
-            return <SignInPage {...props} auto provider={{
-                id: 'microsoft-auth-provider',
-                title: 'Microsoft',
-                message: 'Sign in using Microsoft',
-                apiRef: microsoftAuthApiRef,
-            }} />;
-        },
-    },
     apis,
     bindRoutes({bind}) {
         bind(catalogPlugin.externalRoutes, {
@@ -87,41 +68,34 @@ const routes = (
         >
             {entityPage}
         </Route>
-        <Route path="/docs" element={<TechDocsIndexPage/>}>
-            <DefaultTechDocsHome/>
-        </Route>
-        <Route
-            path="/docs/:namespace/:kind/:name/*"
-            element={<TechDocsReaderPage/>}
-        >
-            <TechDocsAddons>
-                <ReportIssue/>
-            </TechDocsAddons>
-        </Route>
-        <Route path="/create" element={<ScaffolderPage/>}/>
-        <Route path="/api-docs" element={<ApiExplorerPage/>}/>
-        <Route
-            path="/tech-radar"
-            element={<TechRadarPage width={1500} height={800}/>}
-        />
-        <Route
-            path="/catalog-import"
-            element={
-                <RequirePermission permission={catalogEntityCreatePermission}>
-                    <CatalogImportPage/>
-                </RequirePermission>
-            }
-        />
-        <Route path="/search" element={<SearchPage/>}>
-            {searchPage}
-        </Route>
-        <Route path="/settings" element={<UserSettingsPage/>}/>
         <Route path="/catalog-graph" element={<CatalogGraphPage/>}/>
-        <Route path="/explore" element={<ExplorePage/>}/>
-        <Route path="/lighthouse" element={<LighthousePage/>}/>
-        <Route path="/devtools" element={<DevToolsPage/>}/>
         <Route path="/dask-onboarding" element={<DaskOnboardingPage/>}/>
-        <Route path="/opencost" element={<OpencostPage/>}/>
+        <Route path="/api-docs" element={<ApiExplorerPage />} />
+        <Route path="/docs" element={<TechDocsIndexPage />}>
+          <DefaultTechDocsHome />
+        </Route>
+        <Route path="/docs/:namespace/:kind/:name/*" element={<TechDocsReaderPage>
+            <TechDocsAddons>
+              <ReportIssue />
+            </TechDocsAddons>
+          </TechDocsReaderPage>}
+        />
+        <Route path="/search" element={<SearchPage />}>
+          {searchPage}
+        </Route>
+        <Route path="/settings" element={<UserSettingsPage />} />
+        <Route path="/explore" element={<ExplorePage />} />
+        <Route path="/create" element={
+            <RequirePermission permission={catalogEntityCreatePermission}>
+              <ScaffolderPage />
+            </RequirePermission>
+          }
+        />
+        <Route path="/import" element={<CatalogImportPage />} />
+        <Route path="/lighthouse" element={<LighthousePage />} />
+        <Route path="/tech-radar" element={<TechRadarPage width={1500} height={800} />} />
+        <Route path="/devtools" element={<DevToolsPage />} />
+        <Route path="/opencost" element={<OpencostPage />} />
     </FlatRoutes>
 );
 
