@@ -13,33 +13,31 @@ python3.12 -m venv .venv && source .venv/bin/activate
 ```
 
 1. Autentiser deg mot Google med service account i sandbox:
-
-```sh
-gcloud auth application-default login --impersonate-service-account dataplattform-deploy@dataplattform-sandbox-6f27.iam.gserviceaccount.com
-```
-
-1. Kjør
-```sh
-yarn build:all
-```
+   ```sh
+   gcloud auth application-default login --impersonate-service-account dataplattform-deploy@dataplattform-sandbox-6f27.iam.gserviceaccount.com
+   ```
 
 1. Kjør
-```sh
-yarn tsc
-```
+   ```sh
+   yarn build:all
+   ```
 
-2. Kjør yarn sammen med riktig prosjekt-ID i én og samme kommando:
+1. Kjør
+   ```sh
+   yarn tsc
+   ```
 
-```sh
-DASK_GCP_PROJECT_ID="dataplattform-sandbox-6f27" TOPIC_ID="onboarding_topic" yarn dev 
-```
+1. Kjør yarn sammen med riktig prosjekt-ID i én og samme kommando:
+   ```sh
+   DASK_GCP_PROJECT_ID="dataplattform-sandbox-6f27" TOPIC_ID="onboarding_topic" yarn dev 
+   ```
 
 ## Release ny versjon av plugin
 
 1. Bump versjon for plugin, bytt `@internal` til `@kartverket` og sett `"private": false` i `package.json`
-2. Kjør `yarn build` og deretter `yarn prepack` i mappen til den respektive pluginen
-3. Kjør til slutt `npm publish`. Brukernavn og passord finnes i Secret Manager i dataplattform-prod-prosjektet
-> **NB:** Her har man satt på tofaktor-autentisering. Per nå er det bare @jonasmw94 som har tilgang til denne
-4. Fjern endringene som blir gjort i `"main"` og `"types"` i `package-json` 
-5. Bytt tilbake til `"private": true` og `@internal`. Dette er for å ha hot reloading under utvikling
-6. Verifiser til slutt at ting fungerer som det skal ved å kjøre opp endringene lokalt
+1. Kjør `yarn build` og deretter `yarn prepack` i mappen til den respektive pluginen
+1. Kjør til slutt `npm publish`. Brukernavn og passord finnes i Secret Manager i dataplattform-prod-prosjektet
+   > **NB:** Her har man satt på tofaktor-autentisering. Per nå er det bare @jonasmw94 som har tilgang til denne
+1. Fjern endringene som blir gjort i `"main"` og `"types"` i `package-json` 
+1. Bytt tilbake til `"private": true` og `@internal`. Dette er for å ha hot reloading under utvikling
+1. Verifiser til slutt at ting fungerer som det skal ved å kjøre opp endringene lokalt
