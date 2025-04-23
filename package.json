@@ -59,6 +59,7 @@
     ]
   },
   "dependencies": {
+    "@internal/backstage-plugin-dask-onboarding": "workspace:^",
     "@mui/material": "5.16.4",
     "@types/react": "^17"
   },
