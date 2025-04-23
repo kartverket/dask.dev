@@ -18,6 +18,16 @@ python3.12 -m venv .venv && source .venv/bin/activate
 gcloud auth application-default login --impersonate-service-account dataplattform-deploy@dataplattform-sandbox-6f27.iam.gserviceaccount.com
 ```
 
+1. Kjør
+```sh
+yarn build:all
+```
+
+1. Kjør
+```sh
+yarn tsc
+```
+
 2. Kjør yarn sammen med riktig prosjekt-ID i én og samme kommando:
 
 ```sh
