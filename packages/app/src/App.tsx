@@ -26,7 +26,7 @@ import {catalogEntityCreatePermission} from '@backstage/plugin-catalog-common/al
 import {ExplorePage} from '@backstage-community/plugin-explore';
 import {LighthousePage} from '@backstage-community/plugin-lighthouse';
 import {DevToolsPage} from '@backstage/plugin-devtools';
-import {DaskOnboardingPage} from '@kartverket/backstage-plugin-dask-onboarding';
+import {DaskOnboardingPage} from '@internal/backstage-plugin-dask-onboarding';
 import {pluginRiScNorwegianTranslation} from '@kartverket/backstage-plugin-risk-scorecard';
 import {OpencostPage} from "@kartverket/backstage-plugin-opencost";
 
